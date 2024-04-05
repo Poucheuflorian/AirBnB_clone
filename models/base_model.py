@@ -19,6 +19,6 @@ class BaseModel():
 
     def to_dict(self):
         dict_ = self.__dict__
-        dict_[created_at] = dict_[created_at].isoformat()
-        dict_[updated_at] = dict_[created_at].isoformat()
+        dict_['created_at'] = dict_[created_at].isoformat()
+        dict_['updated_at'] = dict_[created_at].isoformat()
         dict_['__class__'] = BaseModel.__name__
