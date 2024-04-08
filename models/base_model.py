@@ -7,10 +7,16 @@ from datetime import datetime
 class BaseModel():
     """ model of all basics classes"""
 
-    def __init__(self):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.today()
-        self.updated_at = datetime.today()
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            kwargs.pop('__class__')
+            kwargs['created_at'] = datetime.fromisoformat(kwargs['created_at'])
+            kwargs['updated_at'] = datetime.fromisoformat(kwargs['updated_at'])
+            self.__dict__ = kwargs
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.today()
+            self.updated_at = datetime.today()
 
     def __str__(self):
         return '[{}] ({}) {}'.\
