@@ -17,9 +17,13 @@ class FileStorage():
     def save(self):
         dict_save = {}
         for key, value in self.__class__.__objects.items():
-            dict_save[key] = value.to_dict()
+            try:
+                dict_save[key] = value.to_dict()
+            except:
+                pass
         with open(self.__class__.__file_path, 'w', errors='ignore') as f:
             json.dump(dict_save, f, sort_keys=True, indent=4)
+
     def reload(self):
         try:
             with open(self.__class__.__file_path) as f:
