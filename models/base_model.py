@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-from __init__ import storage
+from models import storage
 
 class BaseModel():
     """ model of all basics classes"""
