@@ -20,4 +20,6 @@ class FileStorage():
             dict_save[key] = value.to_dict()
         with open(self.__class__.__file_path, 'w', errors='ignore') as f:
             json.dump(dict_save, f, sort_keys=True, indent=4)
-
+    def reload(self):
+        with open(self.__class__.__file_path) as f:
+            self.__class__.__objects =  json.load(f)
