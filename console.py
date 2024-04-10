@@ -13,6 +13,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
+        print('\n')
         pass
 
     def do_EOF(self, line):
